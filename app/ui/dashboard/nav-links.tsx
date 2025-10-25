@@ -11,19 +11,19 @@ import clsx from 'clsx';
  
 const links = [
   {
-    name: 'Inicio',
-    href: '/',
+    name: 'Home',
+    href: '/dashboard',
     icon: HomeIcon,
   },
   {
-    name: 'Usuarios',
-    href: '/users',
-    icon: UserGroupIcon,
+    name: 'Invoices',
+    href: '/dashboard/invoices',
+    icon: DocumentDuplicateIcon,
   },
   {
-    name: 'Documentos',
-    href: '/documents',
-    icon: DocumentDuplicateIcon,
+    name: 'Customers',
+    href: '/dashboard/customers',
+    icon: UserGroupIcon,
   },
 ];
  
