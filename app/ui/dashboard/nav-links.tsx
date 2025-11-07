@@ -4,6 +4,10 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
+  BriefcaseIcon,
+  CubeIcon,
+  DocumentTextIcon,
+  ChartBarIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -11,19 +15,34 @@ import clsx from 'clsx';
  
 const links = [
   {
-    name: 'Home',
+    name: 'Dashboard',
     href: '/dashboard',
     icon: HomeIcon,
   },
   {
-    name: 'Invoices',
-    href: '/dashboard/invoices',
-    icon: DocumentDuplicateIcon,
+    name: 'Proyectos',
+    href: '/dashboard/proyectos',
+    icon: BriefcaseIcon,
   },
   {
-    name: 'Customers',
-    href: '/dashboard/customers',
-    icon: UserGroupIcon,
+    name: 'Recursos',
+    href: '/dashboard/recursos',
+    icon: CubeIcon,
+  },
+  {
+    name: 'Documentos',
+    href: '/dashboard/documentos',
+    icon: DocumentTextIcon,
+  },
+  {
+    name: 'Reportes',
+    href: '/dashboard/reportes',
+    icon: ChartBarIcon,
+  },
+  {
+    name: 'APIs',
+    href: '/dashboard/apis',
+    icon: DocumentDuplicateIcon,
   },
 ];
  

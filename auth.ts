@@ -1,21 +1,22 @@
+// Autenticación temporalmente deshabilitada
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import type { User } from '@/app/lib/definitions';
-import bcrypt from 'bcrypt';
-import postgres from 'postgres';
 
-const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
-
+// Función mock para evitar errores de base de datos
 async function getUser(email: string): Promise<User | undefined> {
-  try {
-    const user = await sql<User[]>`SELECT * FROM users WHERE email=${email}`;
-    return user[0];
-  } catch (error) {
-    console.error('Failed to fetch user:', error);
-    throw new Error('Failed to fetch user.');
+  // Usuario mock para bypass temporalmente
+  if (email === 'admin@empresa.com') {
+    return {
+      id: '1',
+      name: 'Admin',
+      email: 'admin@empresa.com',
+      password: 'admin123'
+    } as User;
   }
+  return undefined;
 }
 
 export const { auth, signIn, signOut } = NextAuth({
@@ -31,7 +32,9 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
           if (!user) return null;
-          const passwordsMatch = await bcrypt.compare(password, user.password);
+
+          // Comparación simple sin bcrypt para testing
+          const passwordsMatch = password === user.password;
 
           if (passwordsMatch) return user;
         }
